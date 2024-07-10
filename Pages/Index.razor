@@ -1,0 +1,82 @@
+﻿@page "/"
+@* @using MySpace.Crawler.Web.Models
+@using MySpace.Crawler.Web.Services
+@using System.Collections.ObjectModel
+@inject HttpClient httpClient *@
+
+<PageTitle>Index</PageTitle>
+@* 
+<div class="container">
+    <h2>Welcome to the MySpace Crawler by Cr1TiKa7</h2>
+
+
+    <label for="txtSearchterm" class="form-label">Enter your search term here:</label>
+    <div class="input-group mb-3">
+        <input @bind-value="SearchTerm" type="text" class="form-control" id="txtSearchterm" placeholder="Fixation" @onkeyup="OnTxtSearchTermKeyUp">
+        <button class="btn btn-outline-secondary" type="button" id="btnSearch" @onclick="OnBtnSearchClick">Search</button>
+    </div>
+
+
+    <div class="alert alert-primary" role="alert">
+       This site is very experimental. Please keep this in mind while using it!
+    </div>
+
+
+    <table class="table table-striped">
+        <tr>
+            <th>Artist</th>
+            <th>Title</th>
+            <th>Duration</th>
+            <th>Year</th>
+            <th>Link</th>
+        </tr>
+        @foreach (var item in Items)
+        {
+            <tr>
+                <td>@item.Artist</td>
+                <td>@item.Title</td>
+                <td>@item.Duration</td>
+                <td>@item.Date</td>
+                <td><a href="@item.Url">MySpace Link</a></td>
+            </tr>
+        }
+    </table>
+</div>
+ *@
+
+@* @code 
+{
+
+    private MySpaceCrawlingService _crawlingService;
+
+    public ObservableCollection<SongItem> Items { get; set; } = new ObservableCollection<SongItem>();
+    private string SearchTerm { get; set; }
+
+
+    // protected override Task OnInitializedAsync()
+    // {
+    //     _crawlingService = new MySpaceCrawlingService(httpClient);
+
+    //     return base.OnInitializedAsync();
+
+    // }
+
+    private async Task OnBtnSearchClick(MouseEventArgs e)
+    {
+
+        var res= await _crawlingService.CrawlByTern(SearchTerm, 1);
+        foreach (var item in res)
+        {
+            Items.Add(item);
+        }
+
+    }
+    private async Task OnTxtSearchTermKeyUp(KeyboardEventArgs e)
+    {
+        if (e.Key.Equals("enter", StringComparison.InvariantCultureIgnoreCase))
+        {
+            SearchTerm = "hehehe";
+        }
+
+    }
+} *@
