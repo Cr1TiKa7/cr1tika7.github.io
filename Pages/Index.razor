@@ -1,11 +1,11 @@
 ﻿@page "/"
-@* @using MySpace.Crawler.Web.Models
+@using MySpace.Crawler.Web.Models
 @using MySpace.Crawler.Web.Services
 @using System.Collections.ObjectModel
-@inject HttpClient httpClient *@
+@inject HttpClient httpClient
 
 <PageTitle>Index</PageTitle>
-@* 
+
 <div class="container">
     <h2>Welcome to the MySpace Crawler by Cr1TiKa7</h2>
 
@@ -42,9 +42,9 @@
         }
     </table>
 </div>
- *@
 
-@* @code 
+
+@code 
 {
 
     private MySpaceCrawlingService _crawlingService;
@@ -53,13 +53,13 @@
     private string SearchTerm { get; set; }
 
 
-    // protected override Task OnInitializedAsync()
-    // {
-    //     _crawlingService = new MySpaceCrawlingService(httpClient);
+    protected override Task OnInitializedAsync()
+    {
+        _crawlingService = new MySpaceCrawlingService(httpClient);
 
-    //     return base.OnInitializedAsync();
+        return base.OnInitializedAsync();
 
-    // }
+    }
 
     private async Task OnBtnSearchClick(MouseEventArgs e)
     {
@@ -79,4 +79,4 @@
         }
 
     }
-} *@
+}

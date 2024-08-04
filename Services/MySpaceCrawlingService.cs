@@ -62,10 +62,10 @@ namespace MySpace.Crawler.Web.Services
   -H 'accept: */*' \
   -H 'accept-language: de-DE,de;q=0.9,en-US;q=0.8,en;q=0.7' \
   -H 'cache-control: no-cache' \
-  -H 'client: persistentId=88092f65-0394-4c31-b351-cb9737026797&screenWidth=1920&screenHeight=1080&timeZoneOffsetHours=-2&visitId=da9ff033-fece-48d9-bbe6-ffe89ac12cd8&windowWidth=1105&windowHeight=911' \
+  -H 'client: persistentId=88092f65-0394-4c31-b351-cb9737026797&screenWidth=1920&screenHeight=1080&timeZoneOffsetHours=-2&visitId=d1f21df2-7407-4797-90ae-ad027bb8c05e&windowWidth=1105&windowHeight=911' \
   -H 'content-type: application/x-www-form-urlencoded; charset=UTF-8' \
-  -H 'cookie: playerControlTip=shown=true; persistent_id=pid%3D88092f65-0394-4c31-b351-cb9737026797%26llid%3D-1%26lprid%3D-1%26lltime%3D2024-07-01T13%253A49%253A52.210Z; geo=false; visit_id=da9ff033-fece-48d9-bbe6-ffe89ac12cd8; auth_context=pfc=artistSong&action=comment&object=song_71531347; beacons_enabled=true; player=sequenceId=5&paused=true&currentTime=0&volume=0.2170138888888889&mute=false&shuffled=false&repeat=off&mode=queue&pinned=false&at=360&incognito=false&allowSkips=true&ccOn=false; OptanonConsent=isGpcEnabled=0&datestamp=Wed+Jul+10+2024+18%3A55%3A52+GMT%2B0200+(Mitteleurop%C3%A4ische+Sommerzeit)&version=202406.1.0&isIABGlobal=false&hosts=&landingPath=NotLandingPage&groups=C0001%3A1%2CC0003%3A1%2CSSPD_BG%3A0%2CC0002%3A0%2CC0004%3A0&AwaitingReconsent=false&browserGpcFlag=0' \
-  -H 'hash: ODBkZDI3N2FmOWE3ZTk4MsO9w4bCl3rCt3AzwpcAwrfCnsOxA8Kqw5UKw5PDu8O5dsOdwrXDljfCsMK2WMOMw4pYwpXCn3JjwrIbKcOGw5jDqcOqwpnDqMOQwqvCgMOPw47CncOzasOSw53DgkbCk8OfwrfDhsKJw6nCnQs8wrXDjcOFXT3DocKLwr3CribCrz3CtwYpHcOUw6zDqT0uCsKuFm97FcObw7wYdsKnOsKXw4ViwrLDpsOuwrrDiDo/w4DDuiwuRg%3D%3D' \
+  -H 'cookie: playerControlTip=shown=true; persistent_id=pid%3D88092f65-0394-4c31-b351-cb9737026797%26llid%3D-1%26lprid%3D-1%26lltime%3D2024-07-01T13%253A49%253A52.210Z; geo=false; auth_context=pfc=artistSong&action=comment&object=song_71531347; OptanonAlertBoxClosed=2024-07-10T16:56:10.505Z; visit_id=d1f21df2-7407-4797-90ae-ad027bb8c05e; beacons_enabled=true; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Jul+11+2024+00%3A09%3A39+GMT%2B0200+(Mitteleurop%C3%A4ische+Sommerzeit)&version=202406.1.0&isIABGlobal=false&hosts=&landingPath=NotLandingPage&groups=C0003%3A1%2CC0001%3A1%2CC0002%3A1%2CC0004%3A1%2CSSPD_BG%3A1&AwaitingReconsent=false&browserGpcFlag=0&geolocation=DE%3BNW; player=sequenceId=9&paused=true&currentTime=0&volume=0.2170138888888889&mute=false&shuffled=false&repeat=off&mode=queue&pinned=false&at=360&incognito=false&allowSkips=true&ccOn=false' \
+  -H 'hash: MWQyZjcxNTBlMjUxOWNmZMKta1vCiyLDgcO6CDgxw7dzwpXCrMOyVcO5F8KTwqMvw4F3w7gmwrTCqSxKw5/CncO5w6lIBsKpw55NawkYd3lswqtPZC/DmMK0UW3Dv8KlMhgnacOsw7PCrVxSYyJMFiBmSsOya8KVw7cwwrLDnsKDG8KyelpeZ8Olw5TCjCjCqcKLwqPDqcKRwrFdwpzDhsKHaMKQwpPDpcOzUF9YVw3CgMOyUVs%3D' \
   -H 'origin: https://myspace.com' \
   -H 'pragma: no-cache' \
   -H 'priority: u=1, i' \
@@ -78,7 +78,7 @@ namespace MySpace.Crawler.Web.Services
   -H 'sec-fetch-site: same-origin' \
   -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36' \
   -H 'x-requested-with: XMLHttpRequest' \
-  --data-raw 'page=2&ssid=da1d0bb6-e076-415d-bae4-4e8206b8c7f2'";
+  --data-raw 'page=2&ssid=316c7bb5-b505-419e-80e2-10e018bfa712'";
 
         private async Task<List<SongItem>> CrawlPage(string text, int page = 1, int tries = 10)
         {
@@ -138,22 +138,12 @@ namespace MySpace.Crawler.Web.Services
             return null;
         }
 
-        private HttpWebRequest CreateRequest(string searchTerm,
-            int page = 1,
-            string hash = _crawlingHashHeaderValue
-            )
-        {
-            var webRequest = (HttpWebRequest)WebRequest.Create("https://myspace.com/ajax/page/search/songs?q=" + searchTerm);
-            webRequest.Headers.Add("hash", _crawlingHashHeaderValue);
-
-            return webRequest;
-        }
-
         private async Task<HttpResponseMessage> ParseCurl(string curl, int page = 1)
         {
             var baseUrl = _baseUrlRegex.Match(curl).Groups["url"].Value;
 
             var request = new HttpRequestMessage(HttpMethod.Post, baseUrl);
+            request.Method = HttpMethod.Post;
             
             foreach (Match headeRegexResult in _headerRegex.Matches(curl))
             {
@@ -179,6 +169,8 @@ namespace MySpace.Crawler.Web.Services
                         //case "hash":
                         //    webRequest.Headers.Add(headeRegexResult.Groups["headerName"].Value, headeRegexResult.Groups["headerValue"].Value);
                         //    break;
+                        case "Access-Control-Allow-Origin":
+                            break;
                         default:
                             request.Headers.Add(name, value);
                             break;
@@ -186,6 +178,7 @@ namespace MySpace.Crawler.Web.Services
 
                 }
             }
+            
             var ssid = _contentRegex.Match(curl).Groups["ssid"].Value;
             var stringContent = new StringContent($"page={page}&ssid={ssid}");
             request.Content = stringContent;
